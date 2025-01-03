@@ -13,9 +13,9 @@ class Boards {
 			for (int i = 0; i < 8; ++i) {
 				for (int j = 0; j < 8; ++j){
 					if ((i + j) % 2 == 0)
-						board[i][j] = "⬜️";
+						board[i][j] = "◼︎";
 					else
-						board[i][j] = "⬛️";
+						board[i][j] = "◻︎";
 				}
 			}
 		};
@@ -36,9 +36,9 @@ class Boards {
 				return ("invalid pos");
 		}
 
-		void set_pos_value(std::string type, int x, int y) {
+		void set_pos_value(std::string icon, int x, int y) {
 			if (x >= 0 && x < 8 && y >= 0 && y < 8) {
-				board[y][x] = type;}
+				board[y][x] = icon;}
 			else 
 				std::cout << "invalid pos" << std::endl;
 		}

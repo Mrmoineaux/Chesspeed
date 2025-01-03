@@ -20,8 +20,7 @@ class King : public Piece {
 		else {
     	    std::cout << "\033[1;31mInvalid movement for King !\033[0m" << std::endl;
     	}
-}
-
+	}
 };
 
 #endif

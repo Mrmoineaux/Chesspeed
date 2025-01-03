@@ -21,12 +21,37 @@ class Boards {
 		};
 		
 		void display_board() const{
+			for (int i = 0; i <= 17; ++i) {
+				if (i == 0)
+					std::cout << " ╔";
+				else
+					std::cout << "═";
+			}
+			std::cout << "╗";
+			std::cout << "\n";
 			for (int i = 0; i < 8; ++i) {
+				std::cout << "\033[1;31m" << 8 - i << "\033[0m║ ";
 				for (int j = 0; j < 8; ++j) {
 					std::cout << board[i][j] << " ";
 				}
+				std::cout << "║";
 				std::cout << "\n";
 			}
+			for (int i = 0; i <= 17; ++i) {
+				if (i == 0)
+					std::cout << " ╚";
+				else
+					std::cout << "═";
+			}
+			std::cout << "╝";
+			std::cout << "\n";
+			for (int i = 0; i <= 8; ++i) {
+				if (i == 0)
+					std::cout << "   ";
+				else
+					std::cout << "\033[1;31m" << i << "\033[0m ";
+			}
+			std::cout << "\n";
 		}
 
 		std::string get_pos_state(int x, int y) const{

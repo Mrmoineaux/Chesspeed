@@ -8,5 +8,6 @@
 #include "Board.hpp"
 #include "King.hpp"
 #include "Queen.hpp"
+#include "Bishop.hpp"
 
 #endif

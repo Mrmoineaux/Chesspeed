@@ -3,7 +3,7 @@
 
 #include "Include.hpp"
 
-class Queen : public Piece{
+class Queen : public Piece {
 	public:
 		Queen(char c, int x, int y)
 			: Piece("Queen", c, x, y, (c == 'W') ? "♛" : "♕") {}
@@ -20,8 +20,8 @@ class Queen : public Piece{
 			else {
 				std::cout << "\033[1;31mInvalid movement for Queen !\033[0m" << std::endl;
 			}
+			
 		}
 };
-
 
 #endif

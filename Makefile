@@ -5,7 +5,7 @@ EXEC = Echecs
 CXX = g++
 
 # Options de compilation
-CXXFLAGS = -Wall -Wextra -Werror -std=c++17 -g -I./include
+CXXFLAGS = -Wall -Wextra -std=c++17 -g -I./include
 
 # Liste des fichiers source (main.cpp et Piece.cpp sont dans src/)
 SRCS = src/main.cpp src/Piece.cpp

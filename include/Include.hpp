@@ -6,5 +6,7 @@
 
 #include "Piece.hpp"
 #include "Board.hpp"
+#include "King.hpp"
+#include "Queen.hpp"
 
 #endif

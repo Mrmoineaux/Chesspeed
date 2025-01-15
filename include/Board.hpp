@@ -68,8 +68,23 @@ class Boards {
 				std::cout << "invalid pos" << std::endl;
 		}
 
-	
+		void render_board(SDL_Renderer* renderer) {
+			const int square_size = 100; // Taille d'une case
+			SDL_Color dark_square = {0, 0, 0, 255}; // Couleur des cases noires
+			SDL_Color light_square = {255, 255, 255, 255}; // Couleur des cases blanches
 
+			for (int i = 0; i < 8; ++i) {
+				for (int j = 0; j < 8; ++j) {
+					// Déterminer la couleur de la case
+					SDL_Color color = (i + j) % 2 == 0 ? light_square : dark_square;
+					SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+
+					// Définir la position et la taille de la case
+					SDL_Rect square = {j * square_size, i * square_size, square_size, square_size};
+					SDL_RenderFillRect(renderer, &square);
+				}
+			}
+		}
 };
 
 #endif

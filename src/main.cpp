@@ -1,9 +1,13 @@
 #include "../include/Include.hpp"
 
 int main() {
-	Boards board;
+    App app; // Création de la structure
 
-	board.display_board();
+    init_app(app); // Initialisation
+    if (app.running) { // Si l'initialisation a réussi
+        main_loop(app); // Lancement de la boucle principale
+    }
+    cleanup_app(app); // Nettoyage des ressources
 
-	return(0);
+    return 0;
 }

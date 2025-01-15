@@ -5,25 +5,29 @@ EXEC = Echecs
 CXX = g++
 
 # Options de compilation
-CXXFLAGS = -Wall -Wextra -std=c++17 -g -I./include
+CXXFLAGS = -Wall -Wextra -std=c++17 -g -F./include #-F/Library/Framework
 
-# Liste des fichiers source (main.cpp et Piece.cpp sont dans src/)
-SRCS = src/main.cpp src/Piece.cpp
+# Framework SDL2
+FRAMEWORKS = -framework SDL2
+
+# Liste des fichiers source
+SRCS = src/main.cpp src/Init_app.cpp
 
 # Dossier pour les fichiers objets
 BUILD_DIR = build
 
-# Objets générés (dans le dossier build sans sous-dossier "src")
+# Objets générés
 OBJS = $(patsubst src/%.cpp, $(BUILD_DIR)/%.o, $(SRCS))
 
-# Règle par défaut (cible par défaut)
+# Règle par défaut
 all: $(BUILD_DIR) $(EXEC)
 
-# Création de l'exécutable uniquement si les fichiers objets ont changé
+# Création de l'exécutable
 $(EXEC): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $^
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(FRAMEWORKS) -Wl,-rpath,./include
 
-# Compilation des fichiers .cpp en .o (dans le dossier build)
+
+# Compilation des fichiers .cpp
 $(BUILD_DIR)/%.o: src/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
@@ -31,13 +35,11 @@ $(BUILD_DIR)/%.o: src/%.cpp
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
 
-# Nettoyage des fichiers générés
+# Nettoyage
 clean:
 	rm -f $(BUILD_DIR)/*.o $(EXEC)
 
-# Nettoyage approfondi (si des fichiers temporaires sont générés)
 fclean: clean
 	rm -rf $(BUILD_DIR) *~ *.bak
 
-# Recompilation complète (clean + all)
 re: fclean all
